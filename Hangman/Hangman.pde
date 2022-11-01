@@ -1,5 +1,12 @@
+void setup(){
 String[] ordbog = loadStrings("Ordbog.txt");
-println("there are " + ordbog.length + " lines");
-for (int i = 0 ; i < ordbog.length; i++) {
-  println(ordbog[i]);
+random(ordbog.length);
+int tal = int(random(ordbog.length));
+println(ordbog[tal]);
+
+size (200, 200);
+textAlign(CENTER);
+
+
+text(ordbog[tal], width/2, height/2);
 }
