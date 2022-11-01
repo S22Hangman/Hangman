@@ -1,0 +1,7 @@
+Krav spec:
+•	Hovedmenu
+•	Der er en timer for antal bogstaver
+•	Vælg et tilfældigt ord fra listen
+•	Kan se de forkerte gæt
+•	Kan se de rigtige gæt
+•	En ny del af kroppen tegnes pr. fejl
