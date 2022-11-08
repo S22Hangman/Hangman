@@ -31,12 +31,10 @@ void draw() {
   wrongGuesses(wrong, positions);
 
   text(ordbog[tal].toUpperCase(), width/2, height/3);
-
-  text(wrong, width/2, height/2);
 }
 
 void keyPressed() {
-  if (key == CODED) {
+  if (key == CODED || key == ' ') {
     return;
   }
   
