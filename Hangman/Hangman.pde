@@ -6,7 +6,7 @@ println(ordbog[tal]);
 
 size (200, 200);
 textAlign(CENTER);
-
-
 text(ordbog[tal], width/2, height/2);
+
+
 }
