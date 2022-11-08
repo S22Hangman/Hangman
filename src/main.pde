@@ -1,12 +1,13 @@
-void setup(){
-String[] ordbog = loadStrings("Ordbog.txt");
-random(ordbog.length);
-int tal = int(random(ordbog.length));
-println(ordbog[tal]);
+void setup() {
+  fullScreen();
+  textAlign(CENTER);
+  
+  String[] ordbog = loadStrings("Ordbog.txt");
+  int tal = int(random(ordbog.length));
+  text(ordbog[tal], width/2, height/2);
+}
 
-size (200, 200);
-textAlign(CENTER);
-
-
-text(ordbog[tal], width/2, height/2);
+void draw() {
+  galge();
+  bakke();
 }
