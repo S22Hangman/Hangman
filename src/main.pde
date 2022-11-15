@@ -1,3 +1,4 @@
+int value = 0;
 PImage Markus;
 int tal;
 String[] ordbog;
@@ -7,7 +8,7 @@ ArrayList<PVector> availablepos = new ArrayList<PVector>();
 String right = "";
 
 int s = 0;
-int state = 0;
+int state = -1;
 
 void setup() {
   Markus = loadImage("Markus2.0.JPG");
@@ -30,7 +31,9 @@ void setup() {
 
 void draw() {
   background (128);
-  if (state == 0) {
+  if (state ==-1){
+    MainMenu();
+  } else if (state == 0) {
     galge();
     bakke();
     boolean failed = man(wrong.length());
@@ -41,7 +44,6 @@ void draw() {
     guesses(ordbog[tal], right);
     wrongGuesses(wrong, positions);
 
-    text(ordbog[tal].toUpperCase(), width/2, height/3);
     if (frameCount%60 == 0) {
       s--;
     }
@@ -59,7 +61,7 @@ void draw() {
 // denies the use of keycoded's William
 void keyPressed() {
   if (state == 0) {
-    if (key == CODED || key == ' ') {
+    if (key == CODED || key == ' ' || key == ENTER) {
       return;
     }
 
