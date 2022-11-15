@@ -1,4 +1,4 @@
-//Denne funktion Tegner en del af manden for hvert forkert gæt. 
+//Denne funktion Tegner en del af manden for hvert forkert gæt.
 boolean man(int num) {
   if (num > 0) {
     rope();
@@ -31,7 +31,7 @@ boolean man(int num) {
   if (num > 8) {
     return true;
   }
-  
+
 
   return false;
 }
@@ -40,7 +40,6 @@ void rope () {
   stroke (221, 245, 5);
   strokeWeight (10);
   line (width/3, height/3, width/3, 400);
-
 }
 
 void head() {

@@ -1,4 +1,3 @@
-
 PImage Markus;
 int tal;
 String[] ordbog;
@@ -11,7 +10,6 @@ int s = 0;
 int state = 0;
 
 void setup() {
-   
   Markus = loadImage("Markus2.0.JPG");
 
   fullScreen();
@@ -40,7 +38,7 @@ void draw() {
       state = 1;
     }
     stroke(0);
-    guesses(ordbog[tal].length());
+    guesses(ordbog[tal], right);
     wrongGuesses(wrong, positions);
 
     text(ordbog[tal].toUpperCase(), width/2, height/3);
@@ -54,34 +52,10 @@ void draw() {
     }
   } else if (state == 1) {
     MarkusBillede();
-
-  galge();
-  bakke();
-  boolean failed = man(wrong.length());
-  if (failed) {
-    tal = int(random(ordbog.length));
-    wrong = "";
-    right = "";
-  }
-  stroke(0);
-  guesses(ordbog[tal],right);
-  wrongGuesses(wrong, positions);
-
- 
-  if(frameCount%60 == 0) {
-  s--;
-  }
-  text(s,100,100);
-  
-  if(s == 0){
-    tal = int(random(ordbog.length));
-    s = ordbog[tal].length() *20;
-    wrong = "";
-    right = "";
   }
 }
 
-  
+
 
 // denies the use of keycoded's William
 void keyPressed() {
@@ -93,6 +67,9 @@ void keyPressed() {
     String skey = (key + "").toLowerCase();
 
     if (ordbog[tal].indexOf(skey) > -1) {
+      if (right.indexOf(skey) == -1) {
+        right += skey;
+      }
     } else {
       if (wrong.indexOf(skey) == -1) {
         wrong += skey;
@@ -101,24 +78,6 @@ void keyPressed() {
         availablepos.remove(rand);
         positions.add(newPos);
       }
-
-  if (key == CODED || key == ' ') {
-    return;
-  }
-  
-  String skey = (key + "").toLowerCase();
-  
-  if (ordbog[tal].indexOf(skey) > -1) {
-    if (right.indexOf(skey) == -1){
-    right += skey;
-    }
-  } else {
-    if (wrong.indexOf(skey) == -1) {
-      wrong += skey;
-      int rand = int(random(availablepos.size()));
-      PVector newPos = availablepos.get(rand);
-      availablepos.remove(rand);
-      positions.add(newPos);
     }
   }
 }
