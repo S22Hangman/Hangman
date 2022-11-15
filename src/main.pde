@@ -32,6 +32,7 @@ void draw() {
   if (failed) {
     tal = int(random(ordbog.length));
     wrong = "";
+    right = "";
   }
   stroke(0);
   guesses(ordbog[tal],right);
@@ -47,6 +48,7 @@ void draw() {
     tal = int(random(ordbog.length));
     s = ordbog[tal].length() *20;
     wrong = "";
+    right = "";
   }
 }
 
