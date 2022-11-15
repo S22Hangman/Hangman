@@ -55,8 +55,6 @@ void draw() {
   }
 }
 
-
-
 // denies the use of keycoded's William
 void keyPressed() {
   if (state == 0) {
@@ -83,7 +81,6 @@ void keyPressed() {
 }
 
 void restart(){
-
   right = "";
   wrong = "";
   s = ordbog[tal].length() *20;
@@ -97,4 +94,5 @@ void restart(){
     }
   }
   
+  state = 0;
 }
