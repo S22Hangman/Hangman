@@ -25,7 +25,11 @@ void draw() {
   background (128);
   galge();
   bakke();
-  man(wrong.length());
+  boolean failed = man(wrong.length());
+  if (failed) {
+    tal = int(random(ordbog.length));
+    wrong = "";
+  }
   stroke(0);
   guesses(ordbog[tal].length());
   wrongGuesses(wrong, positions);
