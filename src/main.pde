@@ -3,7 +3,7 @@ String[] ordbog;
 String wrong = "";
 ArrayList<PVector> positions = new ArrayList<PVector>();
 ArrayList<PVector> availablepos = new ArrayList<PVector>();
-
+int s = 0;
 void setup() {
 
   fullScreen();
@@ -12,6 +12,7 @@ void setup() {
 
   ordbog = loadStrings("Ordbog.txt");
   tal = int(random(ordbog.length));
+  s = ordbog[tal].length() *20;
   
   for (int i = 0; i < 540; i += 50) {
     for (int j = 0; j < 300; j += 50) {
@@ -31,6 +32,16 @@ void draw() {
   wrongGuesses(wrong, positions);
 
   text(ordbog[tal].toUpperCase(), width/2, height/3);
+  if(frameCount%60 == 0) {
+  s--;
+  }
+  text(s,100,100);
+  
+  if(s == 0){
+    tal = int(random(ordbog.length));
+    s = ordbog[tal].length() *20;
+    wrong = "";
+  }
 }
 
 void keyPressed() {
