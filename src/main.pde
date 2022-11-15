@@ -52,6 +52,7 @@ void draw() {
     }
   } else if (state == 1) {
     MarkusBillede();
+    text("Press enter to restart", width / 2, height / 10);
   }
 }
 
@@ -77,12 +78,17 @@ void keyPressed() {
         positions.add(newPos);
       }
     }
+  } else if (state == 1) {
+    if (key == ENTER) {
+      restart();
+    }
   }
 }
 
 void restart(){
   right = "";
   wrong = "";
+  tal = int(random(ordbog.length));
   s = ordbog[tal].length() *20;
   
   positions = new ArrayList<PVector>();
