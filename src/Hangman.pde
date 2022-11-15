@@ -1,30 +1,37 @@
-void man(int num) {
-  switch(num) {
-  case 0:
+//denne funktion
+boolean man(int num) {
+  if (num > 0) {
     rope();
-    break;
-  case 1:
-    head();
-    break;
-  case 2:
-    neck();
-    break;
-  case 3:
-    torso();
-    break;
-  case 4:
-    leftarm();
-    break;
-  case 5:
-    rightarm();
-    break;
-  case 6:
-    leftleg();
-    break;
-  case 7:
-    rightleg();
-    break;
   }
+  if (num > 1) {
+    head();
+  }
+  if (num > 2) {
+    neck();
+  }
+  if (num > 3) {
+    torso();
+  }
+  if (num > 4) {
+    ;
+    leftarm();
+  }
+
+  if (num > 5) {
+    rightarm();
+  }
+  if (num > 6) {
+    leftleg();
+  }
+
+  if (num > 7) {
+    rightleg();
+  }
+
+  if (num > 8) {
+    return true;
+  }
+  return false;
 }
 
 void rope () {

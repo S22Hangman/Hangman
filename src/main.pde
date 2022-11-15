@@ -3,6 +3,8 @@ String[] ordbog;
 String wrong = "";
 ArrayList<PVector> positions = new ArrayList<PVector>();
 ArrayList<PVector> availablepos = new ArrayList<PVector>();
+String right = "";
+
 int s = 0;
 void setup() {
 
@@ -26,12 +28,17 @@ void draw() {
   background (128);
   galge();
   bakke();
-  man(wrong.length());
+  boolean failed = man(wrong.length());
+  if (failed) {
+    tal = int(random(ordbog.length));
+    wrong = "";
+    right = "";
+  }
   stroke(0);
-  guesses(ordbog[tal].length());
+  guesses(ordbog[tal],right);
   wrongGuesses(wrong, positions);
 
-  text(ordbog[tal].toUpperCase(), width/2, height/3);
+ 
   if(frameCount%60 == 0) {
   s--;
   }
@@ -41,9 +48,13 @@ void draw() {
     tal = int(random(ordbog.length));
     s = ordbog[tal].length() *20;
     wrong = "";
+    right = "";
   }
 }
 
+  
+
+// denies the use of keycoded's William
 void keyPressed() {
   if (key == CODED || key == ' ') {
     return;
@@ -52,7 +63,9 @@ void keyPressed() {
   String skey = (key + "").toLowerCase();
   
   if (ordbog[tal].indexOf(skey) > -1) {
-    
+    if (right.indexOf(skey) == -1){
+    right += skey;
+    }
   } else {
     if (wrong.indexOf(skey) == -1) {
       wrong += skey;
