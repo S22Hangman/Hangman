@@ -37,7 +37,7 @@ void draw() {
   guesses(ordbog[tal],right);
   wrongGuesses(wrong, positions);
 
-  text(ordbog[tal].toUpperCase(), width/2, height/3);
+ 
   if(frameCount%60 == 0) {
   s--;
   }
@@ -51,8 +51,8 @@ void draw() {
 }
 
   
-}
-// denies the use of keycoded's
+
+// denies the use of keycoded's William
 void keyPressed() {
   if (key == CODED || key == ' ') {
     return;
