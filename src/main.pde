@@ -5,6 +5,7 @@ ArrayList<PVector> positions = new ArrayList<PVector>();
 ArrayList<PVector> availablepos = new ArrayList<PVector>();
 String right = "";
 
+int s = 0;
 void setup() {
 
   fullScreen();
@@ -13,6 +14,7 @@ void setup() {
 
   ordbog = loadStrings("Ordbog.txt");
   tal = int(random(ordbog.length));
+  s = ordbog[tal].length() *20;
   
   for (int i = 0; i < 540; i += 50) {
     for (int j = 0; j < 300; j += 50) {
@@ -26,11 +28,27 @@ void draw() {
   background (128);
   galge();
   bakke();
-  man(wrong.length());
+  boolean failed = man(wrong.length());
+  if (failed) {
+    tal = int(random(ordbog.length));
+    wrong = "";
+  }
   stroke(0);
   guesses(ordbog[tal],right);
   wrongGuesses(wrong, positions);
 
+  text(ordbog[tal].toUpperCase(), width/2, height/3);
+  if(frameCount%60 == 0) {
+  s--;
+  }
+  text(s,100,100);
+  
+  if(s == 0){
+    tal = int(random(ordbog.length));
+    s = ordbog[tal].length() *20;
+    wrong = "";
+  }
+}
 
   
 }
