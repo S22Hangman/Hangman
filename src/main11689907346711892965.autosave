@@ -1,0 +1,30 @@
+int tal;
+String[] ordbog;
+int s = 0;
+int num = 0;
+
+void setup() {
+  fullScreen();
+  textAlign(CENTER);
+  
+  ordbog = loadStrings("Ordbog.txt");
+  tal = int(random(ordbog.length));
+  text(ordbog[tal], width/2, height/2);
+}
+
+void draw() {
+  galge();
+  bakke();
+  man(num);
+  num++;
+  guesses(ordbog[tal].length());
+  
+ if(frameCount%60 == 0)
+  s++;
+  text(s,100,100);
+  
+  if(s == 20){
+    s = 0;
+    text(ordbog[tal], width/2, height/2);
+  }
+}
