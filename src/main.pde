@@ -52,10 +52,9 @@ void draw() {
     }
   } else if (state == 1) {
     MarkusBillede();
+    text("Press enter to restart", width / 2, height / 10);
   }
 }
-
-
 
 // denies the use of keycoded's William
 void keyPressed() {
@@ -79,5 +78,27 @@ void keyPressed() {
         positions.add(newPos);
       }
     }
+  } else if (state == 1) {
+    if (key == ENTER) {
+      restart();
+    }
   }
+}
+
+void restart(){
+  right = "";
+  wrong = "";
+  tal = int(random(ordbog.length));
+  s = ordbog[tal].length() *20;
+  
+  positions = new ArrayList<PVector>();
+  availablepos = new ArrayList<PVector>();
+   for (int i = 0; i < 540; i += 50) {
+    for (int j = 0; j < 300; j += 50) {
+      PVector newpos = new PVector(i + width/1.5 + 50, j + 150);
+      availablepos.add(newpos);
+    }
+  }
+  
+  state = 0;
 }
