@@ -81,3 +81,20 @@ void keyPressed() {
     }
   }
 }
+
+void restart(){
+
+  right = "";
+  wrong = "";
+  s = ordbog[tal].length() *20;
+  
+  positions = new ArrayList<PVector>();
+  availablepos = new ArrayList<PVector>();
+   for (int i = 0; i < 540; i += 50) {
+    for (int j = 0; j < 300; j += 50) {
+      PVector newpos = new PVector(i + width/1.5 + 50, j + 150);
+      availablepos.add(newpos);
+    }
+  }
+  
+}
