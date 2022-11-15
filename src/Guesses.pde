@@ -12,21 +12,19 @@ void guesses (String word, String right) {
       x = width / 2;
       y += 100;
     }
-    
-    
-    
-// laver linjen under teksten og skriver bogstaverne over linjen
+
+
+
+    // laver linjen under teksten og skriver bogstaverne over linjen
     line (x, y, x + lineWidth, y);
-    if (right.indexOf(word.charAt(i)) > -1){
-      text ((word.charAt(i) + "").toUpperCase(),x +lineWidth/2 ,y-10);
+    if (right.indexOf(word.charAt(i)) > -1) {
+      text ((word.charAt(i) + "").toUpperCase(), x +lineWidth/2, y-10);
     }
-    
+
     x += width / 25;
-    
-   
+  }
 }
-  
-}
+
 // laver kassen til wrong guesses
 void wrongGuesses (String wrongwrong, ArrayList<PVector> positions) {
   strokeWeight(2.5);
