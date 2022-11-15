@@ -5,6 +5,8 @@ String[] ordbog;
 String wrong = "";
 ArrayList<PVector> positions = new ArrayList<PVector>();
 ArrayList<PVector> availablepos = new ArrayList<PVector>();
+String right = "";
+
 int s = 0;
 int state = 0;
 
@@ -53,9 +55,35 @@ void draw() {
   } else if (state == 1) {
     MarkusBillede();
 
+  galge();
+  bakke();
+  boolean failed = man(wrong.length());
+  if (failed) {
+    tal = int(random(ordbog.length));
+    wrong = "";
+    right = "";
+  }
+  stroke(0);
+  guesses(ordbog[tal],right);
+  wrongGuesses(wrong, positions);
+
+ 
+  if(frameCount%60 == 0) {
+  s--;
+  }
+  text(s,100,100);
+  
+  if(s == 0){
+    tal = int(random(ordbog.length));
+    s = ordbog[tal].length() *20;
+    wrong = "";
+    right = "";
   }
 }
 
+  
+
+// denies the use of keycoded's William
 void keyPressed() {
   if (state == 0) {
     if (key == CODED || key == ' ') {
@@ -73,6 +101,24 @@ void keyPressed() {
         availablepos.remove(rand);
         positions.add(newPos);
       }
+
+  if (key == CODED || key == ' ') {
+    return;
+  }
+  
+  String skey = (key + "").toLowerCase();
+  
+  if (ordbog[tal].indexOf(skey) > -1) {
+    if (right.indexOf(skey) == -1){
+    right += skey;
+    }
+  } else {
+    if (wrong.indexOf(skey) == -1) {
+      wrong += skey;
+      int rand = int(random(availablepos.size()));
+      PVector newPos = availablepos.get(rand);
+      availablepos.remove(rand);
+      positions.add(newPos);
     }
   }
 }
