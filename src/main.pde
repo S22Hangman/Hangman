@@ -3,6 +3,7 @@ String[] ordbog;
 String wrong = "";
 ArrayList<PVector> positions = new ArrayList<PVector>();
 ArrayList<PVector> availablepos = new ArrayList<PVector>();
+String right = "";
 
 void setup() {
 
@@ -27,12 +28,13 @@ void draw() {
   bakke();
   man(wrong.length());
   stroke(0);
-  guesses(ordbog[tal].length());
+  guesses(ordbog[tal],right);
   wrongGuesses(wrong, positions);
 
-  text(ordbog[tal].toUpperCase(), width/2, height/3);
-}
 
+  
+}
+// denies the use of keycoded's
 void keyPressed() {
   if (key == CODED || key == ' ') {
     return;
@@ -41,7 +43,9 @@ void keyPressed() {
   String skey = (key + "").toLowerCase();
   
   if (ordbog[tal].indexOf(skey) > -1) {
-    
+    if (right.indexOf(skey) == -1){
+    right += skey;
+    }
   } else {
     if (wrong.indexOf(skey) == -1) {
       wrong += skey;
