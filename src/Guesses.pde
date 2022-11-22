@@ -1,7 +1,9 @@
-void guesses (String word, String right) {
+boolean guesses (String word, String right) {
   int lineWidth = width / 50;
   int x = width / 2;
   int y = 600;
+  
+  boolean guess = true;
 
   for (int i=0; i < word.length(); i++) {
     strokeWeight(5);
@@ -14,15 +16,18 @@ void guesses (String word, String right) {
     }
 
 
-
+    
     // laver linjen under teksten og skriver bogstaverne over linjen
     line (x, y, x + lineWidth, y);
     if (right.indexOf(word.charAt(i)) > -1) {
       text ((word.charAt(i) + "").toUpperCase(), x +lineWidth/2, y-10);
+    } else {
+      guess = false;
     }
 
     x += width / 25;
   }
+  return guess;
 }
 
 // laver kassen til wrong guesses
